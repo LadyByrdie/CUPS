@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author ladybyrdie
- *
- */
-module CUPS {
-}

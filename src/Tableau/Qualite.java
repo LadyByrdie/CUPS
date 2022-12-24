@@ -1,6 +1,7 @@
 package Tableau;
 
-public enum Qualite {AIMABLE("Aimable"),
+public enum Qualite {
+	AIMABLE("Aimable"),
 	AMBITIEUX("Ambitieux.se"),
 	AMICAL("Amical"),
 	APPLIQUE("Appliqué"),
@@ -39,7 +40,13 @@ public enum Qualite {AIMABLE("Aimable"),
 	DISCRET("Discret.e"),
 	DROLE("Drôle"),
 	DYNAMIQUE("Dynamique"),
-	EFFICACE("efficace"),
+	EFFICACE("efficace"),;
+	
+	private String nom;
+	
+	Qualite(String nom) {
+		this.nom = nom;
+	}
 	//Note tout cela il faudra le diviser en plusieurs dico 
 	//il faudra classer les differents types de qualites (idem pour les Defauts)
 	// Pour acceder au different types des listes il faudra utiliser le clone de la liste

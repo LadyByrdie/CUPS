@@ -5,5 +5,4 @@ public enum Orientation {HETEROSEXUEL,
 	HOMOSEXUEL,
 	BISEXUEL,
 	PANSEXUEL
-
 }
