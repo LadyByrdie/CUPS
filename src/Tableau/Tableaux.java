@@ -1,29 +1,43 @@
 package Tableau;
+import Utilisateur.*;
+import java.util.Objects;
+
+import Utilisateur.Utilisateur;
 
 public class Tableaux {
 public String[] tableau;
-public int nbelements=0;
-int nbelementsmax=6;
+protected int nbelements=0;
+int nbelementsmax;
 String element;
 
-public Tableaux(String element) {
+public Tableaux(int nbelementsmax) {
 	this.tableau = new String[nbelementsmax];
 	this.nbelements = 0;
-	this.tableau[nbelements]=element;
-	this.nbelements++;
-	this.element= element;
+	this.nbelementsmax=nbelementsmax;
 }
 
 
 
-public String getelement() {
-	return element;
+public int getNbelements() {
+	return nbelements;
 }
 
+protected char[] transformationChar(String mot) {
+	return mot.toCharArray();
+}
 
+protected Tableaux transformerTableau(String[] nouveauTableau) {
+	int longueur= nouveauTableau.length;
+	Tableaux nouveauTab= new Tableaux(nbelementsmax);
+	for(int i=0; i<longueur;i++) {
+		nouveauTab.ajouterElement(nouveauTableau[i]);
+	}
+	
+	return nouveauTab;
+}
 
 public void ajouterElement(String element) {
-	if(verifierSiPresent(element)==1){
+	if(verifierSiPresent(element)<0){
 		this.tableau[nbelements]=element;
 		nbelements++;
 		rangerTableau();
@@ -32,24 +46,43 @@ public void ajouterElement(String element) {
 		}
 	}
 
+public void EliminerElement(int indice) {
+	if(0<=indice&&indice<nbelements) {
+			this.tableau[indice]=null;
+			rangerTableau();
+			nbelements--;
+	}else{ 
+		System.out.println("L'element que vous souhaitez eliminer n'existe pas");
+	}
+}
+
+public void EleminerElement(String element) {
+	int indice= verifierSiPresent(element);
+	EliminerElement(indice);
+}
+
 protected int verifierSiPresent(String element){
 	int i=0;
-	while (this.tableau[i]!=element&&i<nbelements) {
+	while (!Objects.equals(this.tableau[i], element)&&i<nbelements) {
 		i++;
 	}
 	
 	if (i+1>=nbelements){
-		return 1;
+		return -1;
 	} else {
-		return 0;
+		return i;
 	}
 }
 
-private void rangerTableau() {
-	String element;
+public String obtenirElement(int indice) {
+	return this.tableau[indice];
+}
+
+public void rangerTableau() {
 	for (int i=0; i<nbelements; i++) {
 		for( int j=i+1; j<nbelements; j++) {
 			if( this.tableau[i].compareTo(this.tableau[j])>0) {
+				String element;
 				element=tableau[i];
 				this.tableau[i]=this.tableau[j];
 				this.tableau[j]=element;
@@ -67,10 +100,9 @@ private void rangerTableau() {
 
 	public static void main(String[] args) {
 		Tableaux montab;
-		montab= new Tableaux("Calme");
+		montab= new Tableaux(3);
 		montab.ajouterElement("Sympatique");
 		montab.ajouterElement("Calme");
 		}
-
 	}
 
