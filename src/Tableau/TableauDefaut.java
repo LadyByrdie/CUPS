@@ -49,7 +49,7 @@ public class TableauDefaut extends Tableaux {
 	}
 
 
-	public void creationTabDefaut(String[] nouveauxDefauts, int nombreDefauts) {
+	public TableauDefaut creationTabDefaut(String[] nouveauxDefauts, int nombreDefauts) {
 		int i=0;
 		while(i<=nombreDefauts) {
 			String defaut= nouveauxDefauts[i];
@@ -57,6 +57,7 @@ public class TableauDefaut extends Tableaux {
 				this.ajouterElement(defaut);
 			}
 		}
+		return this;
 	}
 		
 }

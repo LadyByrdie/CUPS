@@ -70,9 +70,7 @@ public class TableauQualite extends Tableaux{
 		return false;
 	}
 
-
-
-	public void creationTabQualite(String[] nouvellesQualites, int nombreQualites) {
+	public TableauQualite creationTabQualite(String[] nouvellesQualites, int nombreQualites) {
 		int i=0;
 		while(i<=nombreQualites) {
 			String  qualite= nouvellesQualites[i];
@@ -80,6 +78,7 @@ public class TableauQualite extends Tableaux{
 				this.tableauQualite.ajouterElement(qualite);
 			}
 		}
+		return this;
 	}
 		
 }

@@ -1,3 +1,4 @@
+package Utilisateur;
 import Tableau.*;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -5,6 +6,8 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.Scanner;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,13 +30,14 @@ public class Utilisateur {
 	
 	private String identitUtilisateur;
 	
-	
 	public Utilisateur(String nomUtilisateur, String preferenceUtilisateurQualite, String preferenceUtilisateurDefaut, int numeroEtudiant, int age) {
 		this.nomUtilisateur = nomUtilisateur;
 		this.preferenceUtilisateurQualite = preferenceUtilisateurQualite;
 		this.preferenceUtilisateurDefaut = preferenceUtilisateurDefaut;
 		this.numeroEtudiant = numeroEtudiant;
 		this.age= age;
+		creationTabDefaut();
+		creationTabQualite();
 	}
 	
 	private void creerIdentit() {
@@ -41,10 +45,52 @@ public class Utilisateur {
 		this.identitUtilisateur=nomUtilisateur+numeroEtudiantString;
 	}
 	
-	private void creationTabDefaut() {
-		
+	public String boxDialogue(String element) {
+		return element;
+	}
+	private void creationTabDefaut(){
+		Scanner obj = new Scanner(System.in);
+		String defaut;
+		int nbelements=tabDefaut.getNBDEFAUTSMAX();
+		String[] tableauTemporaireStrings=new String[nbelements];
+		int i=0;
+		System.out.println("Veuillez inserer "+ nbelements + "des vos defauts");
+		while(i<4) {
+			defaut=obj.nextLine();
+			if(defaut!="") {
+				System.out.println(i+"." + defaut + "A été bien ajuté dans votre tableau.");
+				tableauTemporaireStrings[i]=defaut;
+				i++;
+			}else {
+				System.out.println("Veuillez inserer un Defaut valable"
+						+ "s'il vous plait");
+				defaut=obj.nextLine();
+			}
+		}
+		this.tabDefaut=tabDefaut.creationTabDefaut(tableauTemporaireStrings,i);
 	}
 	
+	private void creationTabQualite(){
+		Scanner obj = new Scanner(System.in);
+		String qualite;
+		int nbelements=tabQualite.getNBELEMENTSMAX();
+		String[] tableauTemporaireStrings=new String[nbelements];
+		int i=0;
+		System.out.println("Veuillez inserer "+ nbelements + " principales des vos qualites");
+		while(i<nbelements) {
+			qualite=obj.nextLine();
+			if(qualite!="") {
+				System.out.println(i+"." + qualite + "A été bien ajuté dans votre tableau.");
+				tableauTemporaireStrings[i]=qualite;
+				i++;
+			}else {
+				System.out.println("Veuillez s'il inserer un Defaut "
+						+ "s'il vous plait");
+				qualite=obj.nextLine();
+			}
+		}
+		this.tabQualite=tabQualite.creationTabQualite(tableauTemporaireStrings,i);
+	}
 	
 	public String getIdentitUtilisateur() {
 		return identitUtilisateur;
@@ -122,16 +168,5 @@ public class Utilisateur {
 	}
 //notemental: je pense que tout se qui est filtrage c'est a faire en OCaml.
 
-	protected void FiltrageQualite(Utilisateur autreUtilisateur) {
-		Tableaux tabQualiteUtilisateur= autreUtilisateur.getTabQualite();
-		this.FiltrageDefaut(autreUtilisateur);
-		if(tabQualiteUtilisateur.verifierSiPresent(preferenceUtilisateurQualite)>=0) {
-			tableauUtilisateur.ajouterElement(nomUtilisateur);
-		}
-	}
 
-
-private void eliminerUtilisateur(Utilisateur autreUtiliasteur) {
-	
-}
 }
