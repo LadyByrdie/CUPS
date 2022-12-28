@@ -3,64 +3,79 @@ import ClassesAdmin.TicketsDemande;
 import Utilisateur.*;
 
 public class TableauQualite extends Tableaux{
-	private static int NBELEMENTSMAX=37;
-	private static int NBELEMENTS=4;
-	private String[] tableauRef= new String[] {"aimable","ambitieux","amical",
+	private int NBELEMENTSMAX=37;
+	private static int NBQUALITEMAX=6;
+	private Tableaux tableauQualite= new Tableaux(NBQUALITEMAX);
+	private String[] tableauRefQualite= new String[] {"aimable","ambitieux","amical",
 			  "appliqué","alturiste","analytique","assertif","asstucieux","attachant",
 			  "attentif","attentionné","audicieux","autonome","avenant","aventureux",
 			  "bienveillant","calme","chaleureux","charimatique","combatif","communicatif",
 			  "concentré.e","pacifiste","confiant","conformiste","convaincant","cooperatif",
 			  "cultivé","curieux.se","décidé","dévoué","confiable","direct","discipliné",
 			  "discret","drôle","dynamique","efficace"};
-	
-	
-	public static int getNBELEMENTSMAX() {
-		return NBELEMENTSMAX;
+	public TableauQualite(int nbelementsmax) {
+		super(NBQUALITEMAX);
 	}
+
 	
-	
-	public TableauQualite(int NBELEMENTSMAXmax) {
-			super(NBELEMENTSMAX);
-		}
-	
-	
-	public void setTableauQualite(Tableaux tableauQualite) {
-		this.tableauQualite = tableauQualite;
-	}
-	
+	//protected int verifierMot(String nouvellequalite) {
+//		char[] motDeBase= nouvellequalite.toCharArray();
+//		int longueur= motDeBase.length;
+//		for( int i=0; i<NBELEMENTS;i++) {
+//			char[] motComare= tableauDefaut.transformationChar(tableauDefaut.obtenirElement(i));
+//			
+//		}
+//		return 0;
+	//}
+
+
 	
 	public Tableaux getTableauQualite() {
 		return tableauQualite;
 	}
-	
-	
-	private Tableaux tableauQualite= new Tableaux(NBELEMENTS);;
-	tableauQualite= TableauQualite.transformerTableau(tableauRef);
-	
-	
-	//protected int verifierMot(String nouvellequalite) {
-	//	char[] motDeBase= nouvellequalite.toCharArray();
-	//	int longueur= motDeBase.length;
-	//	for( int i=0; i<NBELEMENTSMAX;i++) {
-	//		char[] motComare= tableauQualite.transformationChar(tableauQualite.obtenirElement(i));
-	//		
-	//	}
-	//	return 0;
-	//}
-	
-	
-	public void verifierQualite(String nouvellequalite) {
+
+
+	public void setTableauQualite(Tableaux tableauQualite) {
+		this.tableauQualite = tableauQualite;
+	}
+
+
+	public int getNBELEMENTSMAX() {
+		return NBELEMENTSMAX;
+	}
+
+
+	public static int getNBQUALITEMAX() {
+		return NBQUALITEMAX;
+	}
+
+
+	public void setTableauRefQualite(String[] tableauRefQualite) {
+		this.tableauRefQualite = tableauRefQualite;
+	}
+
+
+	private int verifierQualite(String nouvellequalite) {
 		if (tableauQualite.verifierSiPresent(nouvellequalite)>=0) {
+			return 1;
 			}else{
 				TicketsDemande ticketsDemande = new TicketsDemande();
 				ticketsDemande.faireDemande(nouvellequalite);
+				return 0;
+				}
 				
 			}
-		
+	
+
+	public void creationTabQualite(String[] nouvellesQualites, int nombreQualites) {
+		int i=0;
+		while(i<=nombreQualites) {
+			String  qualite= nouvellesQualites[i];
+			if (verifierQualite(qualite)==1) {
+				this.tableauQualite.ajouterElement(qualite);
+			}
 		}
-	
-	protected void Filtrer(String element) {
-		switch(Orientation)
 	}
-	
+		
 }
+	

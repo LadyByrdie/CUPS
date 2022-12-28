@@ -13,33 +13,36 @@ import javax.swing.JTextField;
 import java.math.*;
 public class Utilisateur {
 	public String nomUtilisateur;
-	public Utilisateur[] baseUtilisatur;
+	public Utilisateur[] baseUtilisatur;//a enlever
 	protected String preferenceUtilisateurQualite;
 	protected String preferenceUtilisateurDefaut;
 	protected Orientation orientation;
 	private TableauQualite tabQualite;
 	private TableauDefaut tabDefaut;
-	private Tableaux tableauUtilisateur;
+	private TableauUtilisateur tableauUtilisateur;
+	protected int age;
 	private int nbUtilisateur=0;
-//	private int nbDefauts=tabDefaut(nbelements);
 	public Sexe sexe;
 	int numeroEtudiant;
+	
 	private String identitUtilisateur;
 	
 	
-	public Utilisateur(String nomUtilisateur, String preferenceUtilisateurQualite, String preferenceUtilisateurDefaut, int numeroEtudiant) {
-		super();
+	public Utilisateur(String nomUtilisateur, String preferenceUtilisateurQualite, String preferenceUtilisateurDefaut, int numeroEtudiant, int age) {
 		this.nomUtilisateur = nomUtilisateur;
 		this.preferenceUtilisateurQualite = preferenceUtilisateurQualite;
 		this.preferenceUtilisateurDefaut = preferenceUtilisateurDefaut;
-		this.tabQualite = tabQualite;
-		this.tabDefaut = tabDefaut;
 		this.numeroEtudiant = numeroEtudiant;
+		this.age= age;
 	}
 	
 	private void creerIdentit() {
 		String numeroEtudiantString= String.valueOf(numeroEtudiant);
 		this.identitUtilisateur=nomUtilisateur+numeroEtudiantString;
+	}
+	
+	private void creationTabDefaut() {
+		
 	}
 	
 	
@@ -49,15 +52,6 @@ public class Utilisateur {
 
 	public String getNomUtilisateur() {
 		return nomUtilisateur;
-	}
-	
-
-	public Utilisateur[] getTabUtilisateur() {
-		return tabUtilisateur;
-	}
-
-	public void setTabUtilisateur(Utilisateur[] tabUtilisateur) {
-		this.tabUtilisateur = tabUtilisateur;
 	}
 
 	public int getNbUtilisateur() {
@@ -124,10 +118,7 @@ public class Utilisateur {
 		String defautEviter=this.getPreferenceUtilisateurDefaut();
 		Tableaux tabDefautsUtilisateur= autreUtilisateur.getTabDefaut();
 		this.FiltrageSexe(autreUtilisateur);
-		if(tabDefautsUtilisateur.verifierSiPresent(preferenceUtilisateurDefaut)>=0) {
-			//eliminer l'utilisateur de la liste d'attente matching
-		}
-		//si non ne rien faire
+		//utiliser le tableauUtilisateur.
 	}
 //notemental: je pense que tout se qui est filtrage c'est a faire en OCaml.
 
