@@ -1,8 +1,5 @@
 package Tableau;
-import Utilisateur.*;
 import java.util.Objects;
-
-import Utilisateur.Utilisateur;
 
 public class Tableaux {
 	public String[] tableau;

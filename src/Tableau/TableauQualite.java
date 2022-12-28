@@ -1,6 +1,9 @@
 package Tableau;
+
+import java.util.Objects;
+
 import ClassesAdmin.TicketsDemande;
-import Utilisateur.*;
+
 
 public class TableauQualite extends Tableaux{
 	private int NBELEMENTSMAX=37;
@@ -16,18 +19,6 @@ public class TableauQualite extends Tableaux{
 	public TableauQualite(int nbelementsmax) {
 		super(NBQUALITEMAX);
 	}
-
-	
-	//protected int verifierMot(String nouvellequalite) {
-//		char[] motDeBase= nouvellequalite.toCharArray();
-//		int longueur= motDeBase.length;
-//		for( int i=0; i<NBELEMENTS;i++) {
-//			char[] motComare= tableauDefaut.transformationChar(tableauDefaut.obtenirElement(i));
-//			
-//		}
-//		return 0;
-	//}
-
 
 	
 	public Tableaux getTableauQualite() {
@@ -55,23 +46,37 @@ public class TableauQualite extends Tableaux{
 	}
 
 
-	private int verifierQualite(String nouvellequalite) {
-		if (tableauQualite.verifierSiPresent(nouvellequalite)>=0) {
-			return 1;
+	private boolean verifierQualite(String nouvellequalite) {
+		if ((this.verifierSiPresent(nouvellequalite)<0)&&verifierSidansRef(nouvellequalite)) {
+			return true;
 			}else{
 				TicketsDemande ticketsDemande = new TicketsDemande();
 				ticketsDemande.faireDemande(nouvellequalite);
-				return 0;
+				return false;
 				}
 				
 			}
 	
+	private boolean verifierSidansRef(String nouvellequalite) {
+		int i=0;
+		while(i<NBELEMENTSMAX&&(!Objects.equals(nouvellequalite, tableauRefQualite[i]))){
+			i++;
+		}
+		if(i<NBELEMENTSMAX) {
+			return true;
+		}
+		TicketsDemande ticketsDemande = new TicketsDemande();
+		ticketsDemande.faireDemande(nouvellequalite);
+		return false;
+	}
+
+
 
 	public void creationTabQualite(String[] nouvellesQualites, int nombreQualites) {
 		int i=0;
 		while(i<=nombreQualites) {
 			String  qualite= nouvellesQualites[i];
-			if (verifierQualite(qualite)==1) {
+			if (verifierQualite(qualite)) {
 				this.tableauQualite.ajouterElement(qualite);
 			}
 		}

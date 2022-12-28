@@ -2,16 +2,16 @@ package ClassesAdmin;
 import Tableau.Tableaux;
 
 public class TicketsDemande {
-public String[] boite;
-int nbelement=0;
+	public String[] boite;
+	int nbelement=0;
+		
+	public void faireDemande(String element) {
+		boite[nbelement]=element;
+		nbelement++;
+		}
 	
-public void faireDemande(String element) {
-	boite[nbelement]=element;
+	protected void correctionTableauQualite(Tableaux tab, String element) {
+		tab.setTableauQualite();
 	}
 }
-
-protected void correctionTableauQualite(Tableaux tab, String element) {
-	tab.setTableauQualite();
-}
-
 

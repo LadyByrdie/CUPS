@@ -1,42 +1,45 @@
 package Tableau;
 
 import ClassesAdmin.TicketsDemande;
+import java.util.Objects;
 
-public class TableauDefaut {
-
-	public TableauDefaut() {
-		// TODO Auto-generated constructor stub
-	}
+public class TableauDefaut extends Tableaux {
 
 	private int NBELEMENTS=37;
-	private int NBDEFAUTSMAX=6;
+	private static int NBDEFAUTSMAX=6;
 	private String[] tabDefautReference= new String[NBELEMENTS];
-	private Tableaux tableauDefaut= new Tableaux(NBDEFAUTSMAX);
+	public TableauDefaut(int nbelementsmax) {
+		super(NBDEFAUTSMAX);
+	}
 	
 
-	//protected int verifierMot(String nouvellequalite) {
-//		char[] motDeBase= nouvellequalite.toCharArray();
-//		int longueur= motDeBase.length;
-//		for( int i=0; i<NBELEMENTS;i++) {
-//			char[] motComare= tableauDefaut.transformationChar(tableauDefaut.obtenirElement(i));
-//			
-//		}
-//		return 0;
-	//}
-
-
 	
-	private int verifierDefaut(String nouvellequalite) {
-		if (tableauDefaut.verifierSiPresent(nouvellequalite)>=0) {
-			return 1;
+	private boolean verifierDefaut(String nouvellequalite) {
+		if ((this.verifierSiPresent(nouvellequalite)<0)&&verifierSidansRef(nouvellequalite)) {
+			return true;
 			}else{
 				TicketsDemande ticketsDemande = new TicketsDemande();
 				ticketsDemande.faireDemande(nouvellequalite);
-				return 0;
+				return false;
 				}
 				
 			}
 	
+	private boolean verifierSidansRef(String nouvellequalite) {
+		int i=0;
+		while(i<NBELEMENTS&&(!Objects.equals(nouvellequalite, tabDefautReference[i]))){
+			i++;
+		}
+		if(i<NBELEMENTS) {
+			return true;
+		}
+		TicketsDemande ticketsDemande = new TicketsDemande();
+		ticketsDemande.faireDemande(nouvellequalite);
+		return false;
+	}
+
+
+
 	public int getNBELEMENTS() {
 		return NBELEMENTS;
 	}
@@ -45,16 +48,13 @@ public class TableauDefaut {
 		return NBDEFAUTSMAX;
 	}
 
-	public Tableaux getTableauDefaut() {
-		return tableauDefaut;
-	}
 
 	public void creationTabDefaut(String[] nouveauxDefauts, int nombreDefauts) {
 		int i=0;
 		while(i<=nombreDefauts) {
 			String defaut= nouveauxDefauts[i];
-			if (verifierDefaut(defaut)==1) {
-				this.tableauDefaut.ajouterElement(defaut);
+			if (verifierDefaut(defaut)) {
+				this.ajouterElement(defaut);
 			}
 		}
 	}
