@@ -100,4 +100,3 @@ public class Tableaux {
 			montab.ajouterElement("Calme");
 			}
 }
-

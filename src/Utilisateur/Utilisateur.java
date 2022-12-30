@@ -1,5 +1,7 @@
 package Utilisateur;
+import MenuSelection.Menu;
 import Tableau.*;
+import Utilisateur.*;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -16,13 +18,11 @@ import javax.swing.JTextField;
 import java.math.*;
 public class Utilisateur {
 	public String nomUtilisateur;
-	public Utilisateur[] baseUtilisatur;//a enlever
 	protected String preferenceUtilisateurQualite;
 	protected String preferenceUtilisateurDefaut;
-	protected Orientation orientation;
+	protected String orientation;
 	private TableauQualite tabQualite;
 	private TableauDefaut tabDefaut;
-	private TableauUtilisateur tableauUtilisateur;
 	protected int age;
 	private int nbUtilisateur=0;
 	public Sexe sexe;
@@ -38,6 +38,8 @@ public class Utilisateur {
 		this.age= age;
 		creationTabDefaut();
 		creationTabQualite();
+		creerIdentit();
+		DefinirOrientation();
 	}
 	
 	private void creerIdentit() {
@@ -45,9 +47,6 @@ public class Utilisateur {
 		this.identitUtilisateur=nomUtilisateur+numeroEtudiantString;
 	}
 	
-	public String boxDialogue(String element) {
-		return element;
-	}
 	private void creationTabDefaut(){
 		Scanner obj = new Scanner(System.in);
 		String defaut;
@@ -92,6 +91,26 @@ public class Utilisateur {
 		this.tabQualite=tabQualite.creationTabQualite(tableauTemporaireStrings,i);
 	}
 	
+	
+	private void DefinirOrientation() {
+		Scanner obj = new Scanner(System.in);
+		String option="";
+		Menu.menuOrientation();
+		while(option!="1"&&option!="2"&&option!="3"&&option!="4") {
+			System.out.println("Saisisez un bon numero s'il vous plait");
+			option=obj.nextLine();
+		}
+		if (option=="1") {
+			this.orientation="heterosexuelle";
+		}else if(option=="2") {
+			this.orientation="homosexuelle";
+		}else if(option=="3"){
+			this.orientation="bisexuelle";
+		}else{
+			this.orientation="pansexuelle";
+		}
+	}
+	
 	public String getIdentitUtilisateur() {
 		return identitUtilisateur;
 	}
@@ -122,11 +141,6 @@ public class Utilisateur {
 	}
 
 
-	public Orientation getOrientation() {
-		return orientation;
-	}
-
-
 	public Sexe getSexe() {
 		return sexe;
 	}
@@ -137,36 +151,15 @@ public class Utilisateur {
 	}
 
 
-	protected int FiltrageSexe(Utilisateur autreUtilisateur){
-		Sexe sexeUtilisateur= autreUtilisateur.getSexe();
-		switch (orientation) {
-		case HETEROSEXUEL: 
-			//eliminer: personnes du même sexe et les trans
-			return 1;
-			break;
-		case HOMOSEXUEL:
-			//eliminer les personnes du sexe opposé
-			return 2;
-			break;
-		case BISEXUEL:
-			//elimiser les trans
-			return 3;
-			break;
-		case PANSEXUEL:
-			return 4;
-			break;
-			
-		}
+	protected void afficherInfoUtilisateur() {
+		System.out.println(this.nomUtilisateur+ ", "+this.preferenceUtilisateurQualite+", "
++this.preferenceUtilisateurDefaut+ ", "+this.numeroEtudiant+", "+this.age+", "+this.sexe+ ", " 
++this.orientation+", " +this.identitUtilisateur+", " +this.tabQualite+", " +this.tabDefaut);
 	}
 	
+public static void main(String[] args) {
+	Utilisateur random;
+	random= new Utilisateur("Machin", "Attentif", "Distraite", 0001, 20);
 	
-	protected void FiltrageDefaut(Utilisateur autreUtilisateur) {
-		String defautEviter=this.getPreferenceUtilisateurDefaut();
-		Tableaux tabDefautsUtilisateur= autreUtilisateur.getTabDefaut();
-		this.FiltrageSexe(autreUtilisateur);
-		//utiliser le tableauUtilisateur.
-	}
-//notemental: je pense que tout se qui est filtrage c'est a faire en OCaml.
-
-
+}
 }

@@ -1,7 +1,7 @@
 package Utilisateur;
 
 public enum Sexe {
-FEMME,
-HOMME,
-NONBINAIRE
+	FEMME,
+	HOMME,
+	NONBINAIRE
 }

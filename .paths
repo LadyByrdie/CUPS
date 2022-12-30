@@ -1,0 +1,17 @@
+.
+CUPS
+CUPS/CUPS
+CUPS/CUPS/bin
+CUPS/CUPS/bin/BarreDeRecherche
+CUPS/CUPS/bin/ClassesAdmin
+CUPS/CUPS/bin/MenuSelection
+CUPS/CUPS/bin/Tableau
+CUPS/CUPS/bin/Utilisateur
+CUPS/CUPS/bin/tests
+src
+src/BarreDeRecherche
+src/ClassesAdmin
+src/MenuSelection
+src/Tableau
+src/Utilisateur
+src/tests
