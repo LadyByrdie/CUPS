@@ -1,4 +1,5 @@
 package Utilisateur;
+import Tableau.*;
 import MenuSelection.Menu;
 import Tableau.*;
 import Utilisateur.*;
@@ -95,7 +96,8 @@ public class Utilisateur {
 	private void DefinirOrientation() {
 		Scanner obj = new Scanner(System.in);
 		String option="";
-		Menu.menuOrientation();
+		Menu menu = new Menu();
+		menu.menuOrientation();
 		while(option!="1"&&option!="2"&&option!="3"&&option!="4") {
 			System.out.println("Saisisez un bon numero s'il vous plait");
 			option=obj.nextLine();
@@ -158,8 +160,6 @@ public class Utilisateur {
 	}
 	
 public static void main(String[] args) {
-	Utilisateur random;
-	random= new Utilisateur("Machin", "Attentif", "Distraite", 0001, 20);
 	
 }
 }

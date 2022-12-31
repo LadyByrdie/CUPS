@@ -1,0 +1,3 @@
+#!bin/bash
+cd src/Utilisateur
+ocaml Filtres.ml 1221

@@ -1,17 +1,19 @@
 package Tableau;
-
+import Tableau.*;
 import Utilisateur.Utilisateur;
 import java.util.Objects;
 
 public class TableauUtilisateur extends Tableaux{
+	public TableauUtilisateur(int nbelementsmax) {
+		super(NBUTILISATEURMAX);
+	}
+
 	private static int NBUTILISATEURMAX=5;
 	private Utilisateur[] tableauUtilisateur=new Utilisateur[NBUTILISATEURMAX];
 	private int elementsTabU=0;
 	private Tableaux dejaVu= new Tableaux(300);
 	
-	public TableauUtilisateur(int nbelementsmax) {
-		super(NBUTILISATEURMAX);
-	}
+	
 	
 	
 	@SuppressWarnings("unused")
@@ -54,22 +56,26 @@ public class TableauUtilisateur extends Tableaux{
 	}
 	
 	public void afficherInformationUtilisateur(String numIdent) {
-		int indiceUtilisateur= verifierSiPresent(numIdent);
+		int indiceUtilisateur= this.verifierSiPresent(numIdent);
 		if (indiceUtilisateur>=0){
 			int i=0;
 			while((!Objects.equals(numIdent, tableauUtilisateur[i].getIdentitUtilisateur()))&&i<elementsTabU) {
 				i++;
 				}
-			//A factoriser (utilisé plusieurs fois)
 			System.out.println(tableauUtilisateur[i]);
 		}
 	}
+	
+}
+
+
+
 
 //	public static void main(String[] args) {
 //		Utilisateur betatesteur= new Utilisateur("Betty", "intelligent", "arrogant",
 //				Tableaux(), Tableaux tabDefaut, int numeroEtudiant);
 //	}
-}
+
 
 
 

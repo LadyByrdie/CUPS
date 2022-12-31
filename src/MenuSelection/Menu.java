@@ -1,7 +1,7 @@
 package MenuSelection;
 import java.util.*;
 public class Menu {
-	public static void menuSexe() {
+	public void menuSexe() {
 		System.out.println("Veuillez s'il vous plait choisir"+
 	"un nemuro celon votre genre: ");
 		System.out.println("1.Femme");
@@ -9,7 +9,7 @@ public class Menu {
 		System.out.println("3.Non Binaire ");
 	}
 	
-	public static void menuOrientation() {
+	public void menuOrientation() {
 		System.out.println("Veuillez s'il vous plait choisir"+ 
 				"votre orientation numero celon votre orientation sexuelle: ");
 				System.out.println("1. Heterosexuelle");

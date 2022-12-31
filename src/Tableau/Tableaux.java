@@ -32,7 +32,7 @@ public class Tableaux {
 	}
 	
 	public void ajouterElement(String element) {
-		if(verifierSiPresent(element)<0){
+		if(verifierSiPresent(element)>=0){
 			this.tableau[nbelements]=element;
 			nbelements++;
 			rangerTableau();
@@ -56,17 +56,16 @@ public class Tableaux {
 		EliminerElement(indice);
 	}
 	
+	
 	protected int verifierSiPresent(String element){
 		int i=0;
 		while (!Objects.equals(this.tableau[i], element)&&i<nbelements) {
+			if (this.tableau[i]==element){
+				return i;
+			}
 			i++;
 		}
-		
-		if (i+1>=nbelements){
-			return -1;
-		} else {
-			return i;
-		}
+		return -1;
 	}
 	
 	public String obtenirElement(int indice) {
@@ -92,11 +91,19 @@ public class Tableaux {
 				System.out.println(this.tableau[i]);
 			}
 		}
-	
-		public static void main(String[] args) {
+		
+		public void testAjouterelements() {
 			Tableaux montab;
 			montab= new Tableaux(3);
 			montab.ajouterElement("Sympatique");
 			montab.ajouterElement("Calme");
-			}
+			montab.afficherElements();
+		}
+		
+		public void testAjouterelementsRepete() {
+			Tableaux montab = new Tableaux(3);
+			ajouterElement("Sympatique");
+			ajouterElement("Sympatique");
+			afficherElements();
+		}
 }
