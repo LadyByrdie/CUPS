@@ -1,9 +1,10 @@
-package Tableau;
-import Tableau.*;
+package Tableaux;
 import Utilisateur.Utilisateur;
 import java.util.Objects;
 
-public class TableauUtilisateur extends Tableaux{
+import Tableaux.*;
+
+public class TableauUtilisateur extends Tableau{
 	public TableauUtilisateur(int nbelementsmax) {
 		super(NBUTILISATEURMAX);
 	}
@@ -11,7 +12,7 @@ public class TableauUtilisateur extends Tableaux{
 	private static int NBUTILISATEURMAX=5;
 	private Utilisateur[] tableauUtilisateur=new Utilisateur[NBUTILISATEURMAX];
 	private int elementsTabU=0;
-	private Tableaux dejaVu= new Tableaux(300);
+	private Tableau dejaVu= new Tableau(300);
 	
 	
 	

@@ -1,19 +1,32 @@
-package Tableau;
+package Tableaux;
 
 import ClassesAdmin.TicketsDemande;
 import java.util.Objects;
 
-public class TableauDefaut extends Tableaux {
+public class TableauDefaut extends Tableau {
 
 	private int NBELEMENTS=37;
 	private static int NBDEFAUTSMAX=6;
 	private String[] tabDefautReference= new String[NBELEMENTS];
+	private Tableau tableauDefaut= new Tableau(NBDEFAUTSMAX);
 	public TableauDefaut(int nbelementsmax) {
 		super(NBDEFAUTSMAX);
 	}
 	
 
 	
+	public Tableau getTableauDefaut() {
+		return tableauDefaut;
+	}
+
+
+
+	public void setTableauDefaut(Tableau tableauDefaut) {
+		this.tableauDefaut = tableauDefaut;
+	}
+
+
+
 	private boolean verifierDefaut(String nouvellequalite) {
 		if ((this.verifierSiPresent(nouvellequalite)<0)&&verifierSidansRef(nouvellequalite)) {
 			return true;
@@ -48,6 +61,7 @@ public class TableauDefaut extends Tableaux {
 		return NBDEFAUTSMAX;
 	}
 
+	
 
 	public TableauDefaut creationTabDefaut(String[] nouveauxDefauts, int nombreDefauts) {
 		int i=0;

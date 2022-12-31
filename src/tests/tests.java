@@ -1,10 +1,17 @@
 package tests;
+import Tableaux.*;
+import Tableaux.testTableau;
 import Utilisateur.*;
-import Tableau.*;
 public class tests {
 	public static void main(String[] args) {
-		Tableaux montab = new Tableaux(3);
-		 montab.testAjouterelementsRepete(); 
+		testTableau montab= new testTableau();
+//		 montab.testAjouterelementsRepete();
+//		 montab.testAtteindreQuantiteMax();
+//		montab.testAjouterelementsRepete();
+//		montab.testEliminerElementSString();
+//		montab.testEliminerElementStringAbsence();
+//		montab.testRangementTableaux(); a retester
+//		montab.testerTranformerTableau();
+		montab.testerTranformerTableauSurcharge();
 		}
-	
 }

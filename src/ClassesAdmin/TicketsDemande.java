@@ -1,5 +1,5 @@
 package ClassesAdmin; 
-import Tableau.Tableaux;
+import Tableaux.*;
 
 public class TicketsDemande {
 	public String[] boite;
@@ -10,8 +10,18 @@ public class TicketsDemande {
 		nbelement++;
 		}
 	
-	protected void correctionTableauQualite(Tableaux tab, String element) {
-		tab.setTableauQualite();
+	protected void correctionTableauQualite(TableauQualite tab, String element) {
+		Tableau tab2= new Tableau(tab.getNbelements());
+		tab2= tab.getTableauQualite();
+		tab2.ajouterElement(element);
+		tab.setTableauQualite(tab2);
+	}
+	
+	protected void correctionTableauDefaut(TableauDefaut tab, String element) {
+		Tableau tab2= new Tableau(tab.getNbelements());
+		tab2= tab.getTableauDefaut();
+		tab2.ajouterElement(element);
+		tab.setTableauDefaut(tab2);
 	}
 }
 

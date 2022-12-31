@@ -1,7 +1,6 @@
 package Utilisateur;
-import Tableau.*;
 import MenuSelection.Menu;
-import Tableau.*;
+import Tableaux.*;
 import Utilisateur.*;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -125,11 +124,11 @@ public class Utilisateur {
 		return nbUtilisateur;
 	}
 
-	public Tableaux getTabQualite() {
+	public Tableau getTabQualite() {
 		return tabQualite;
 	}
 
-	public Tableaux getTabDefaut() {
+	public Tableau getTabDefaut() {
 		return tabDefaut;
 	}
 

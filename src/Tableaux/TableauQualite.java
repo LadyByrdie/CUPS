@@ -1,14 +1,14 @@
-package Tableau;
+package Tableaux;
 
 import java.util.Objects;
 
 import ClassesAdmin.TicketsDemande;
 
 
-public class TableauQualite extends Tableaux{
+public class TableauQualite extends Tableau{
 	private int NBELEMENTSMAX=37;
 	private static int NBQUALITEMAX=6;
-	private Tableaux tableauQualite= new Tableaux(NBQUALITEMAX);
+	private Tableau tableauQualite= new Tableau(NBQUALITEMAX);
 	private String[] tableauRefQualite= new String[] {"aimable","ambitieux","amical",
 			  "appliqué","alturiste","analytique","assertif","asstucieux","attachant",
 			  "attentif","attentionné","audicieux","autonome","avenant","aventureux",
@@ -21,12 +21,12 @@ public class TableauQualite extends Tableaux{
 	}
 
 	
-	public Tableaux getTableauQualite() {
+	public Tableau getTableauQualite() {
 		return tableauQualite;
 	}
 
 
-	public void setTableauQualite(Tableaux tableauQualite) {
+	public void setTableauQualite(Tableau tableauQualite) {
 		this.tableauQualite = tableauQualite;
 	}
 
