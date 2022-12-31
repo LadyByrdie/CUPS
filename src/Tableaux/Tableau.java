@@ -76,7 +76,12 @@ public class Tableau {
 }
 	
 	public String obtenirElement(int indice) { 
-		return this.tableau[indice];
+		if((indice>0)&&(indice<nbelements)) {
+			return this.tableau[indice];
+		}else{
+			throw new IllegalArgumentException("veuillez inserer un bon argument");
+		}
+		
 	}
 	
 	public void rangerTableau() {

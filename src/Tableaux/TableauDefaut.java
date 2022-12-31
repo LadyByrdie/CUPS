@@ -9,7 +9,7 @@ public class TableauDefaut extends Tableau {
 	private static int NBDEFAUTSMAX=6;
 	private String[] tabDefautReference= new String[NBELEMENTS];
 	private Tableau tableauDefaut= new Tableau(NBDEFAUTSMAX);
-	public TableauDefaut(int nbelementsmax) {
+	public TableauDefaut() {
 		super(NBDEFAUTSMAX);
 	}
 	
@@ -50,8 +50,6 @@ public class TableauDefaut extends Tableau {
 		ticketsDemande.faireDemande(nouvellequalite);
 		return false;
 	}
-
-
 
 	public int getNBELEMENTS() {
 		return NBELEMENTS;

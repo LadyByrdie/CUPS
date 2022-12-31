@@ -10,13 +10,13 @@ public class TableauQualite extends Tableau{
 	private static int NBQUALITEMAX=6;
 	private Tableau tableauQualite= new Tableau(NBQUALITEMAX);
 	private String[] tableauRefQualite= new String[] {"aimable","ambitieux","amical",
-			  "appliqué","alturiste","analytique","assertif","asstucieux","attachant",
+			  "appliqué","alturiste","analytique","assertif","astucieux","attachant",
 			  "attentif","attentionné","audicieux","autonome","avenant","aventureux",
 			  "bienveillant","calme","chaleureux","charimatique","combatif","communicatif",
 			  "concentré.e","pacifiste","confiant","conformiste","convaincant","cooperatif",
 			  "cultivé","curieux.se","décidé","dévoué","confiable","direct","discipliné",
 			  "discret","drôle","dynamique","efficace"};
-	public TableauQualite(int nbelementsmax) {
+	public TableauQualite() {
 		super(NBQUALITEMAX);
 	}
 
@@ -46,7 +46,7 @@ public class TableauQualite extends Tableau{
 	}
 
 
-	private boolean verifierQualite(String nouvellequalite) {
+	protected boolean verifierQualite(String nouvellequalite) {
 		if ((this.verifierSiPresent(nouvellequalite)<0)&&verifierSidansRef(nouvellequalite)) {
 			return true;
 			}else{
@@ -57,7 +57,7 @@ public class TableauQualite extends Tableau{
 				
 			}
 	
-	private boolean verifierSidansRef(String nouvellequalite) {
+	protected boolean verifierSidansRef(String nouvellequalite) {
 		int i=0;
 		while(i<NBELEMENTSMAX&&(!Objects.equals(nouvellequalite, tableauRefQualite[i]))){
 			i++;
@@ -75,7 +75,7 @@ public class TableauQualite extends Tableau{
 		while(i<=nombreQualites) {
 			String  qualite= nouvellesQualites[i];
 			if (verifierQualite(qualite)) {
-				this.tableauQualite.ajouterElement(qualite);
+				this.ajouterElement(qualite);
 			}
 		}
 		return this;

@@ -2,7 +2,7 @@ package ClassesAdmin;
 import Tableaux.*;
 
 public class TicketsDemande {
-	public String[] boite;
+	public String[] boite = new String[30];
 	int nbelement=0;
 		
 	public void faireDemande(String element) {

@@ -5,7 +5,7 @@ import java.util.Objects;
 import Tableaux.*;
 
 public class TableauUtilisateur extends Tableau{
-	public TableauUtilisateur(int nbelementsmax) {
+	public TableauUtilisateur() {
 		super(NBUTILISATEURMAX);
 	}
 
