@@ -185,8 +185,9 @@ public class Utilisateur {
 		System.out.println("Genre: " + this.sexe);
 		System.out.println("Orientation: "+ this.orientation );
 		System.out.println("Mes Qualites: ");
+		tabQualite.afficherTableau();
+		System.out.println("Mes Defauts: ");
 		tabDefaut.afficherTableau();
-		System.out.println("Mes Defauts: " +this.tabDefaut.toString());
 	}
 	
 public static void main(String[] args) {

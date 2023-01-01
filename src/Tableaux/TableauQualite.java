@@ -1,5 +1,6 @@
 package Tableaux;
 
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -25,8 +26,11 @@ public class TableauQualite extends Tableau{
 	public Tableau getTableauQualite() {
 		return tableauQualite;
 	}
-
-
+	
+	public void afficherTableau() {
+		System.out.println(Arrays.toString(tableau));
+	}
+	
 	public void setTableauQualite(Tableau tableauQualite) {
 		this.tableauQualite = tableauQualite;
 	}
