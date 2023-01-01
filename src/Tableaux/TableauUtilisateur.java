@@ -19,13 +19,13 @@ public class TableauUtilisateur extends Tableau{
 	
 	@SuppressWarnings("unused")
 	
-	public void AjouterElement(Utilisateur autreUtilisateur){
+	public void ajouterElement(Utilisateur autreUtilisateur){
 		String codeUtilisateur=autreUtilisateur.getIdentitUtilisateur();
 		int nbUtilisateurs= this.nbelements;
 		if(this.verifierSiPresent(codeUtilisateur)+dejaVu.verifierSiPresent(codeUtilisateur)<0){
 			tableauUtilisateur[nbUtilisateurs]= autreUtilisateur;
-			this.nbelements++;
 			this.ajouterElement(codeUtilisateur);
+			this.nbelements++;
 			dejaVu.ajouterElement(codeUtilisateur);
 			
 		}
@@ -60,10 +60,15 @@ public class TableauUtilisateur extends Tableau{
 		int indiceUtilisateur= this.verifierSiPresent(numIdent);
 		if (indiceUtilisateur>=0){
 			int i=0;
-			while((!Objects.equals(numIdent, tableauUtilisateur[i].getIdentitUtilisateur()))&&i<elementsTabU) {
+			while((!Objects.equals(numIdent, tableauUtilisateur[i].getIdentitUtilisateur()))&&(i<elementsTabU)) {
 				i++;
 				}
-			System.out.println(tableauUtilisateur[i]);
+			if(numIdent==tableauUtilisateur[i].getIdentitUtilisateur()) {
+				tableauUtilisateur[i].afficherInfoUtilisateur();
+			}
+		}else{
+			System.out.println("Erreur: Identifiant non retrouvé");
+			
 		}
 	}
 	

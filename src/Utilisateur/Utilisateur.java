@@ -24,6 +24,7 @@ public class Utilisateur {
 	protected String orientation;
 	private TableauQualite tabQualite= new TableauQualite();
 	private TableauDefaut tabDefaut=new TableauDefaut();
+	public TableauUtilisateur tabUtilisateur= new TableauUtilisateur();
 	protected int age;
 	private int nbUtilisateur=0;
 	public String sexe;
@@ -59,10 +60,9 @@ public class Utilisateur {
 			defaut=obj.nextLine();
 			defaut= defaut.replaceAll("\\p{Punct}", "");
 			if(defaut!="") {
-				if(tabDefaut.verifierSidansRef(defaut)) {
+				if(tabDefaut.verifierSidansRef(defaut)){
 					tabDefaut.ajouterElement(defaut);
 					System.out.println(i+1+"." + defaut + " à été bien ajuté dans votre tableau.");
-					
 				}else {
 				System.out.println("Veuillez inserer un Defaut valable"
 						+ "s'il vous plait");
@@ -177,7 +177,7 @@ public class Utilisateur {
 +this.orientation+", " +this.identitUtilisateur+", " +tabQualite.toString()+", " +this.tabDefaut.toString());
 	}
 	
-	protected void afficherInfoUtilisateur() {
+	public void afficherInfoUtilisateur() {
 		System.out.println("Nom: " + this.nomUtilisateur);
 		System.out.println("Qualite Recherché:  "+ this.preferenceUtilisateurQualite);
 		System.out.println("Defaut évité: " +this.preferenceUtilisateurDefaut);

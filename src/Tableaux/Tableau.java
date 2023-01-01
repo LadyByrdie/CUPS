@@ -1,11 +1,11 @@
 package Tableaux;
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Tableau {
 	public String[] tableau;
 	protected int nbelements=0;
 	int nbelementsmax;
-	String element;
 	
 	public Tableau(int nbelementsmax) {
 		this.nbelementsmax=nbelementsmax;
@@ -32,11 +32,11 @@ public class Tableau {
 	}
 	
 	public void ajouterElement(String element) {
-		if((nbelementsmax>nbelements)&&(verifierSiPresent(element)<0)){
+		if((nbelementsmax>nbelements)&&(this.verifierSiPresent(element)<0)){
 			this.tableau[nbelements]=element;
 			nbelements++;
 			rangerTableau();
-			}else if(nbelements<nbelementsmax){
+			}else if(nbelements<=nbelementsmax){
 				System.out.println("Cette qualité est déja présent dans le tableau");
 			}else {
 				System.out.println("Votre tableau est complet");
@@ -104,5 +104,8 @@ public class Tableau {
 			}
 		}
 		
+		public void afficherTableau() {
+			System.out.println(Arrays.toString(tableau));
+		}
 		
 }

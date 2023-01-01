@@ -26,10 +26,7 @@ public class TableauQualite extends Tableau{
 	public Tableau getTableauQualite() {
 		return tableauQualite;
 	}
-	
-	public void afficherTableau() {
-		System.out.println(Arrays.toString(tableau));
-	}
+
 	
 	public void setTableauQualite(Tableau tableauQualite) {
 		this.tableauQualite = tableauQualite;
@@ -63,17 +60,17 @@ public class TableauQualite extends Tableau{
 		return false;
 	}
 
-	public void correction() {
+	public String correction() {
 		Scanner obj = new Scanner(System.in);
 		String qualite=obj.nextLine();
-		qualite=qualite.replaceAll("\\p{Punct}", "");
 		while(!verifierSidansRef(qualite)) {
 			qualite=obj.nextLine();
-			if(qualite!=""){
-				this.ajouterElement(qualite);
+			qualite= qualite.replaceAll("\\p{Punct}", "");
 			}
+				System.out.println("Votre modification à bien été enregistré");
+				return qualite;
 		}
-	}
+		
 		
 	public TableauQualite creationTabQualite(String[] nouvellesQualites, int nombreQualites) {
 		int i=0;

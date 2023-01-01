@@ -24,10 +24,6 @@ public class TableauDefaut extends Tableau {
 		super(NBDEFAUTSMAX);
 	}
 	
-	public void afficherTableau() {
-		System.out.println(Arrays.toString(tableau));
-	}
-	
 
 	
 	public Tableau getTableauDefaut() {

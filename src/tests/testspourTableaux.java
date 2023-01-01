@@ -5,7 +5,7 @@ import Utilisateur.*;
 import Tableaux.TestTableauQualite;
 public class testspourTableaux {
 	public static void main(String[] args) {
-//		testTableau tab1= new testTableau();
+		testTableau tab1= new testTableau();
 //		tab1.testAjouterelementsRepete();
 //		tab1.testAtteindreQuantiteMax();
 //		tab1.testAjouterelementsRepete();
@@ -21,7 +21,7 @@ public class testspourTableaux {
 		TestTableauQualite tab2= new TestTableauQualite();
 //		
 ////		tab2.testverifierSidansRef();
-		tab2.testCreationTabQualite();
+//		tab2.testCreationTabQualite();
 		
 		//Tests pour les tableu d'Utilisateur
 		
