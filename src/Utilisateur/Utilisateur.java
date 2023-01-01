@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -80,7 +81,7 @@ public class Utilisateur {
 		System.out.println("Veuillez inserer "+ 3 + " principales des vos qualites");
 		while(i<3) {
 			qualite=obj.nextLine();
-			qualite= qualite.replaceAll("\\p{Punct}", "");
+			qualite.replaceAll("\\p{Punct}", "");
 			if(qualite!="") {
 				if(tabQualite.verifierSidansRef(qualite)) {
 					tabQualite.ajouterElement(qualite);
@@ -170,10 +171,22 @@ public class Utilisateur {
 	}
 
 
-	protected void afficherInfoUtilisateur() {
+	protected void afficherInfoUtilisateurOcaml() {
 		System.out.println(this.nomUtilisateur+ ", "+this.preferenceUtilisateurQualite+", "
 +this.preferenceUtilisateurDefaut+ ", "+this.numeroEtudiant+", "+this.age+", "+this.sexe+ ", " 
-+this.orientation+", " +this.identitUtilisateur+", " +this.tabQualite+", " +this.tabDefaut);
++this.orientation+", " +this.identitUtilisateur+", " +tabQualite.toString()+", " +this.tabDefaut.toString());
+	}
+	
+	protected void afficherInfoUtilisateur() {
+		System.out.println("Nom: " + this.nomUtilisateur);
+		System.out.println("Qualite Recherché:  "+ this.preferenceUtilisateurQualite);
+		System.out.println("Defaut évité: " +this.preferenceUtilisateurDefaut);
+		System.out.println("Age: "+this.age);
+		System.out.println("Genre: " + this.sexe);
+		System.out.println("Orientation: "+ this.orientation );
+		System.out.println("Mes Qualites: ");
+		tabDefaut.afficherTableau();
+		System.out.println("Mes Defauts: " +this.tabDefaut.toString());
 	}
 	
 public static void main(String[] args) {

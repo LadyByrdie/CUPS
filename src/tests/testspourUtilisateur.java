@@ -10,8 +10,15 @@ public class testspourUtilisateur {
 			//Bruyant
 			//Faineant (normalement il envoie un message d'erreur)
 			//Capricieux.
-		//Qualite
-		test1.testCreationId();
+		//Qualites:
+		//Bruyant
+		//aimable
+		//alturiste.
+		//attentif
+		//1
+		//1
+//		test1.testCreationId();
+		test1.testafficherInfoUtilisateur();
 	}
 
 }

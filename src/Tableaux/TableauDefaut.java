@@ -2,6 +2,8 @@ package Tableaux;
 
 
 import ClassesAdmin.TicketsDemande;
+
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -20,6 +22,10 @@ public class TableauDefaut extends Tableau {
 	private Tableau tableauDefaut= new Tableau(NBDEFAUTSMAX);
 	public TableauDefaut() {
 		super(NBDEFAUTSMAX);
+	}
+	
+	public String afficherTableau() {
+		return Arrays.toString(tableau);
 	}
 	
 
