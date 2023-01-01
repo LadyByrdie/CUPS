@@ -1,13 +1,22 @@
 package Tableaux;
 
+
 import ClassesAdmin.TicketsDemande;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class TableauDefaut extends Tableau {
 
-	private int NBELEMENTS=37;
+	private int NBELEMENTS=35;
 	private static int NBDEFAUTSMAX=6;
-	private String[] tabDefautReference= new String[NBELEMENTS];
+	private String[] tabDefautReference= new String[] {"Anxieux","Arbitraire","Arriviste","Arrogant","Associable",
+			"Asocial","Assisté","Autoritaire","Avare","Avide","Bagarreur",
+			"Baratineur","Bavard","Bête","Bileux","Blagueur","Blasé",
+			"Blessant","Borné","Boudeur","Brouillon","Brute","Bruyant",
+			"Cachottier","Calculateur","Capricieux","Caractériel","Carriériste",
+			"Cassant","Casse-cou","Castrateur","Chiant","Insensible",
+			"Cérémonieux","Chicaneur"};
+	
 	private Tableau tableauDefaut= new Tableau(NBDEFAUTSMAX);
 	public TableauDefaut() {
 		super(NBDEFAUTSMAX);
@@ -24,21 +33,20 @@ public class TableauDefaut extends Tableau {
 	public void setTableauDefaut(Tableau tableauDefaut) {
 		this.tableauDefaut = tableauDefaut;
 	}
-
-
-
-	private boolean verifierDefaut(String nouvellequalite) {
-		if ((this.verifierSiPresent(nouvellequalite)<0)&&verifierSidansRef(nouvellequalite)) {
-			return true;
-			}else{
-				TicketsDemande ticketsDemande = new TicketsDemande();
-				ticketsDemande.faireDemande(nouvellequalite);
-				return false;
-				}
-				
-			}
 	
-	private boolean verifierSidansRef(String nouvellequalite) {
+	public String correction() {
+		Scanner obj = new Scanner(System.in);
+		String defaut=obj.nextLine();
+		while(!verifierSidansRef(defaut)) {
+			defaut=obj.nextLine();
+			defaut= defaut.replaceAll("\\p{Punct}", "");
+			}
+				System.out.println("Votre modification à bien été enregistré");
+				return defaut;
+		}
+		
+	
+	public boolean verifierSidansRef(String nouvellequalite) {
 		int i=0;
 		while(i<NBELEMENTS&&(!Objects.equals(nouvellequalite, tabDefautReference[i]))){
 			i++;
@@ -47,7 +55,7 @@ public class TableauDefaut extends Tableau {
 			return true;
 		}
 		TicketsDemande ticketsDemande = new TicketsDemande();
-		ticketsDemande.faireDemande(nouvellequalite);
+		ticketsDemande.faireDemandeDefaut(nouvellequalite);
 		return false;
 	}
 
@@ -59,17 +67,22 @@ public class TableauDefaut extends Tableau {
 		return NBDEFAUTSMAX;
 	}
 
-	
-
 	public TableauDefaut creationTabDefaut(String[] nouveauxDefauts, int nombreDefauts) {
 		int i=0;
 		while(i<=nombreDefauts) {
 			String defaut= nouveauxDefauts[i];
-			if (verifierDefaut(defaut)) {
-				this.ajouterElement(defaut);
+			if(verifierSidansRef(defaut)) {
+				if(this.verifierSiPresent(defaut)<0) {
+					this.ajouterElement(defaut);	
+			}else{
+				correction();
 			}
+				i++;
+			
 		}
-		return this;
-	}
 		
+	}
+		return this;
+		
+}
 }

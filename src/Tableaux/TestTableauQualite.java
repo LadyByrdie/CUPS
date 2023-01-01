@@ -3,9 +3,8 @@ import Tableaux.*;
 
 public class TestTableauQualite {
 	TableauQualite montab= new TableauQualite();
-	public TestTableauQualite() {
-		super();
-	}
+	TableauQualite montab1= new TableauQualite();
+	TableauQualite montab3= new TableauQualite();
 
 	public void testverifierSidansRef() {
 		if (montab.verifierSidansRef("avenant")) {
@@ -23,12 +22,19 @@ public class TestTableauQualite {
 	public void testCreationTabQualite() {
 		String[] bonTab= new String[] {"aimable","ambitieux","amical"};
 		String[] pasbonTab= new String[] {"aimable","ambitieux","autreChose"};
+		String[] surchargeTab= new String[] {"aimable","attentionné","audicieux","autonome","avenant","aventureux"};
+		System.out.println("Premier Tableau:");
 		montab=montab.creationTabQualite(bonTab,3);
 		montab.afficherElements();
-		System.out.println("Check");
-		montab= montab.creationTabQualite(pasbonTab,3);
-		montab.afficherElements();
-		montab=montab.creationTabQualite(bonTab, 2);
-		montab.afficherElements();
+		System.out.println("Deuxième Tableau:");
+		montab1= montab1.creationTabQualite(pasbonTab,3);
+		montab1.afficherElements();
+		System.out.println("Troisième Tableau");
+		montab3=montab3.creationTabQualite(surchargeTab, 2);
+		montab3.afficherElements();
 	}
+	
+//Les test réalisées sur cette classe sont ainsi valable dans la classe Tableau Defaut
+	//vu que c'est un copier coller de la classe TableauQualité, la seule qui change c'est
+	// la liste de ref (refDefauts, refQualite)
 }

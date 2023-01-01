@@ -32,7 +32,7 @@ public class Tableau {
 	}
 	
 	public void ajouterElement(String element) {
-		if((nbelementsmax>nbelements)&&(verifierSiPresent(element)<=0)){
+		if((nbelementsmax>nbelements)&&(verifierSiPresent(element)<0)){
 			this.tableau[nbelements]=element;
 			nbelements++;
 			rangerTableau();
@@ -71,7 +71,7 @@ public class Tableau {
 			return -1;
 	}
 		}else{
-			return 0;
+			return -2;
 	}
 }
 	

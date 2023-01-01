@@ -10,12 +10,13 @@ public class UtiliseOcaml {
 	{
 		String command = "src/Utilisateur/pcaml";
 		System.out.println(command);
+	
 		
-		Process p = pb.start();
-		
-		
-	}
- }
+	
+ 
 	
 
 }
+}
+}
+ 

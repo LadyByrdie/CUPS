@@ -3,7 +3,7 @@ import java.util.*;
 public class Menu {
 	public void menuSexe() {
 		System.out.println("Veuillez s'il vous plait choisir"+
-	"un nemuro celon votre genre: ");
+	"un numero celon votre genre: ");
 		System.out.println("1.Femme");
 		System.out.println("2.Homme");
 		System.out.println("3.Non Binaire ");

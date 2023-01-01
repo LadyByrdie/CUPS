@@ -1,6 +1,7 @@
 package Tableaux;
 
 import java.util.Objects;
+import java.util.Scanner;
 
 import ClassesAdmin.TicketsDemande;
 
@@ -44,20 +45,8 @@ public class TableauQualite extends Tableau{
 	public void setTableauRefQualite(String[] tableauRefQualite) {
 		this.tableauRefQualite = tableauRefQualite;
 	}
-
-
-	protected boolean verifierQualite(String nouvellequalite) {
-		if ((this.verifierSiPresent(nouvellequalite)<0)&&verifierSidansRef(nouvellequalite)) {
-			return true;
-			}else{
-				TicketsDemande ticketsDemande = new TicketsDemande();
-				ticketsDemande.faireDemande(nouvellequalite);
-				return false;
-				}
-				
-			}
 	
-	protected boolean verifierSidansRef(String nouvellequalite) {
+	public boolean verifierSidansRef(String nouvellequalite) {
 		int i=0;
 		while(i<NBELEMENTSMAX&&(!Objects.equals(nouvellequalite, tableauRefQualite[i]))){
 			i++;
@@ -66,17 +55,35 @@ public class TableauQualite extends Tableau{
 			return true;
 		}
 		TicketsDemande ticketsDemande = new TicketsDemande();
-		ticketsDemande.faireDemande(nouvellequalite);
+		ticketsDemande.faireDemandeQualite(nouvellequalite);
 		return false;
 	}
 
-	public TableauQualite creationTabQualite(String[] nouvellesQualites, int nombreQualites) {
-		int i=0;
-		while(i<=nombreQualites) {
-			String  qualite= nouvellesQualites[i];
-			if (verifierQualite(qualite)) {
+	public void correction() {
+		Scanner obj = new Scanner(System.in);
+		String qualite=obj.nextLine();
+		qualite=qualite.replaceAll("\\p{Punct}", "");
+		while(!verifierSidansRef(qualite)) {
+			qualite=obj.nextLine();
+			if(qualite!=""){
 				this.ajouterElement(qualite);
 			}
+		}
+	}
+		
+	public TableauQualite creationTabQualite(String[] nouvellesQualites, int nombreQualites) {
+		int i=0;
+		while(i<nombreQualites) {
+			String  qualite= nouvellesQualites[i];
+			if (verifierSidansRef(qualite)) {
+				if (this.verifierSiPresent(qualite)<0) {
+					this.ajouterElement(qualite);
+			}else {
+				correction();
+				
+				}
+			}
+				i++;
 		}
 		return this;
 	}

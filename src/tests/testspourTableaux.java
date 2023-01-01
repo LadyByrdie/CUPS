@@ -3,9 +3,9 @@ import Tableaux.TableauQualite;
 import Tableaux.testTableau;
 import Utilisateur.*;
 import Tableaux.TestTableauQualite;
-public class tests {
+public class testspourTableaux {
 	public static void main(String[] args) {
-		testTableau tab1= new testTableau();
+//		testTableau tab1= new testTableau();
 //		tab1.testAjouterelementsRepete();
 //		tab1.testAtteindreQuantiteMax();
 //		tab1.testAjouterelementsRepete();
@@ -15,12 +15,15 @@ public class tests {
 //		tab1.testerTranformerTableau();
 //		tab1.testerTranformerTableauSurcharge();
 		
-		//Test pour les tableau Qualite
+		//Tests pour les tableau Qualite(et defaut)
 		
-		TestTableauQualite tab2;
-		tab2= new TestTableauQualite();
-		
-//		tab2.testverifierSidansRef();
+//		TestTableauQualite tab2;
+		TestTableauQualite tab2= new TestTableauQualite();
+//		
+////		tab2.testverifierSidansRef();
 		tab2.testCreationTabQualite();
+		
+		//Tests pour les tableu d'Utilisateur
+		
 		}
 }

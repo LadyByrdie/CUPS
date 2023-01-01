@@ -21,11 +21,12 @@ public class Utilisateur {
 	protected String preferenceUtilisateurQualite;
 	protected String preferenceUtilisateurDefaut;
 	protected String orientation;
-	private TableauQualite tabQualite;
-	private TableauDefaut tabDefaut;
+	private TableauQualite tabQualite= new TableauQualite();
+	private TableauDefaut tabDefaut=new TableauDefaut();
 	protected int age;
 	private int nbUtilisateur=0;
-	public Sexe sexe;
+	public String sexe;
+	public String Orientation;
 	int numeroEtudiant;
 	
 	private String identitUtilisateur;
@@ -40,75 +41,97 @@ public class Utilisateur {
 		creationTabQualite();
 		creerIdentit();
 		DefinirOrientation();
+		DefinirSexe();
 	}
 	
-	private void creerIdentit() {
+	protected void creerIdentit() {
 		String numeroEtudiantString= String.valueOf(numeroEtudiant);
 		this.identitUtilisateur=nomUtilisateur+numeroEtudiantString;
 	}
 	
-	private void creationTabDefaut(){
+	protected void creationTabDefaut(){
 		Scanner obj = new Scanner(System.in);
 		String defaut;
-		int nbelements=tabDefaut.getNBDEFAUTSMAX();
-		String[] tableauTemporaireStrings=new String[nbelements];
 		int i=0;
-		System.out.println("Veuillez inserer "+ nbelements + "des vos defauts");
-		while(i<4) {
+		System.out.println("Veuillez inserer "+ 3 + " des vos defauts");
+		while(i<3) {
 			defaut=obj.nextLine();
+			defaut= defaut.replaceAll("\\p{Punct}", "");
 			if(defaut!="") {
-				System.out.println(i+"." + defaut + "A été bien ajuté dans votre tableau.");
-				tableauTemporaireStrings[i]=defaut;
-				i++;
-			}else {
+				if(tabDefaut.verifierSidansRef(defaut)) {
+					tabDefaut.ajouterElement(defaut);
+					System.out.println(i+1+"." + defaut + " à été bien ajuté dans votre tableau.");
+					
+				}else {
 				System.out.println("Veuillez inserer un Defaut valable"
 						+ "s'il vous plait");
-				defaut=obj.nextLine();
+				tabDefaut.ajouterElement(tabDefaut.correction());
+				}
+				i++;
 			}
 		}
-		this.tabDefaut=tabDefaut.creationTabDefaut(tableauTemporaireStrings,i);
+		
 	}
 	
 	private void creationTabQualite(){
 		Scanner obj = new Scanner(System.in);
 		String qualite;
-		int nbelements=tabQualite.getNBELEMENTSMAX();
-		String[] tableauTemporaireStrings=new String[nbelements];
 		int i=0;
-		System.out.println("Veuillez inserer "+ nbelements + " principales des vos qualites");
-		while(i<nbelements) {
+		System.out.println("Veuillez inserer "+ 3 + " principales des vos qualites");
+		while(i<3) {
 			qualite=obj.nextLine();
+			qualite= qualite.replaceAll("\\p{Punct}", "");
 			if(qualite!="") {
-				System.out.println(i+"." + qualite + "A été bien ajuté dans votre tableau.");
-				tableauTemporaireStrings[i]=qualite;
-				i++;
-			}else {
-				System.out.println("Veuillez s'il inserer un Defaut "
-						+ "s'il vous plait");
-				qualite=obj.nextLine();
+				if(tabQualite.verifierSidansRef(qualite)) {
+					tabQualite.ajouterElement(qualite);
+					System.out.println(i+1+"." + qualite + " à été bien ajuté dans votre tableau.");
+				}else {
+					System.out.println("Veuillez inserer une qualite valable"
+							+ "s'il vous plait");
+					tabQualite.correction();
+				}
+
 			}
+			i++;
 		}
-		this.tabQualite=tabQualite.creationTabQualite(tableauTemporaireStrings,i);
 	}
 	
 	
 	private void DefinirOrientation() {
 		Scanner obj = new Scanner(System.in);
-		String option="";
+		int option=0;
 		Menu menu = new Menu();
 		menu.menuOrientation();
-		while(option!="1"&&option!="2"&&option!="3"&&option!="4") {
+		while(option!=1&&option!=2&&option!=3&&option!=4) {
 			System.out.println("Saisisez un bon numero s'il vous plait");
-			option=obj.nextLine();
+			option=Integer.parseInt(obj.nextLine());
 		}
-		if (option=="1") {
+		if (option==1) {
 			this.orientation="heterosexuelle";
-		}else if(option=="2") {
+		}else if(option==2) {
 			this.orientation="homosexuelle";
-		}else if(option=="3"){
+		}else if(option==3){
 			this.orientation="bisexuelle";
 		}else{
 			this.orientation="pansexuelle";
+		}
+	}
+	
+	private void DefinirSexe() {
+		Scanner obj = new Scanner(System.in);
+		int option=0;
+		Menu menu = new Menu();
+		menu.menuSexe();
+		while(option!=1&&option!=2&&option!=3) {
+			System.out.println("Saisisez un bon numero s'il vous plait");
+			option=Integer.parseInt(obj.nextLine());;
+		}
+		if (option==1) {
+			this.sexe="Femme";
+		}else if(option==2) {
+			this.sexe="Homme";
+		}else{
+			this.sexe="Non Binaire";
 		}
 	}
 	
@@ -139,11 +162,6 @@ public class Utilisateur {
 
 	public String getPreferenceUtilisateurDefaut() {
 		return preferenceUtilisateurDefaut;
-	}
-
-
-	public Sexe getSexe() {
-		return sexe;
 	}
 
 
