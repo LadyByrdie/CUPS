@@ -33,7 +33,7 @@ public class TableauUtilisateur extends Tableau{
 	
 	private int recherchedansleTabU(String element) {
 		int i=0;
-		while((!Objects.equals(element, tableauUtilisateur[i].getIdentitUtilisateur()))&&i<elementsTabU) {
+		while((!element.equals(tableauUtilisateur[i].getIdentitUtilisateur()))&&i<elementsTabU) {
 			i++;
 			}
 		return i;
@@ -60,15 +60,30 @@ public class TableauUtilisateur extends Tableau{
 		int indiceUtilisateur= super.verifierSiPresent(numIdent);
 		if (indiceUtilisateur>=0){
 			int i=0;
-			while((!Objects.equals(numIdent, tableauUtilisateur[i].getIdentitUtilisateur()))&&(i<elementsTabU)) {
+			while((i<elementsTabU)&&(!numIdent.equals( tableauUtilisateur[i].getIdentitUtilisateur()))) {
 				i++;
 				}
-			if(numIdent==tableauUtilisateur[i].getIdentitUtilisateur()) {
-				tableauUtilisateur[i].afficherInfoUtilisateur();
+			if(numIdent.equals(tableauUtilisateur[i].getIdentitUtilisateur())) {
+				afficherInformationUtilisateur(i);
 			}
 		}else{
 			System.out.println("Erreur: Identifiant non retrouvé");
 			
+		}
+	}
+	
+	public String afficherInformationUtilisateur(int indice) {
+		if((indice>0)&&(indice<nbelements)) {
+			return tableauUtilisateur[indice].afficherInfoUtilisateurOcaml();
+		}else{
+			throw new IllegalArgumentException("veuillez inserer un bon argument");
+		}
+		
+	}
+	
+	public void afficherTableauUtilisateur() {
+		for(int i=0; i<this.getNbelements();i++) {
+			tableauUtilisateur[i].afficherInfoUtilisateur();
 		}
 	}
 	

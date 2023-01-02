@@ -9,15 +9,15 @@ import java.util.Scanner;
 
 public class TableauDefaut extends Tableau {
 
-	private int NBELEMENTS=35;
-public static int NBDEFAUTSMAX=6;
-	private String[] tabDefautReference= new String[] {"Anxieux","Arbitraire","Arriviste","Arrogant","Associable",
+	private static int NBELEMENTS=35;
+	public static int NBDEFAUTSMAX=6;
+	private static String[] tabDefautReference= new String[] {"Anxieux","Arbitraire","Arriviste","Arrogant","Associable",
 			"Asocial","Assiste","Autoritaire","Avare","Avide","Bagarreur",
-			"Baratineur","Bavard","B�te","Bileux","Blagueur","Blase",
+			"Baratineur","Bavard","Bête","Bileux","Blagueur","Blase",
 			"Blessant","Borne","Boudeur","Brouillon","Brute","Bruyant",
 			"Cachottier","Calculateur","Capricieux","Caract�riel","Carriariste",
 			"Cassant","Casse-cou","Castrateur","Chiant","Insensible",
-			"C�r�monieux","Chicaneur"};
+			"Cérémonieux","Chicaneur"};
 	
 	private Tableau tableauDefaut= new Tableau(NBDEFAUTSMAX);
 	public TableauDefaut() {
@@ -36,6 +36,15 @@ public static int NBDEFAUTSMAX=6;
 		this.tableauDefaut = tableauDefaut;
 	}
 	
+	public int getNBELEMENTS() {
+		return NBELEMENTS;
+	}
+
+	public int getNBDEFAUTSMAX() {
+		return NBDEFAUTSMAX;
+	}
+
+	
 	public String correction() {
 		Scanner obj = new Scanner(System.in);
 		String defaut=obj.nextLine();
@@ -48,9 +57,9 @@ public static int NBDEFAUTSMAX=6;
 		}
 		
 	
-	public boolean verifierSidansRef(String nouvellequalite) {
+	public static boolean verifierSidansRef(String nouvellequalite) {
 		int i=0;
-		while(i<NBELEMENTS&&(!Objects.equals(nouvellequalite, tabDefautReference[i]))){
+		while(i<NBELEMENTS&&(!nouvellequalite.equals(tabDefautReference[i]))){
 			i++;
 		}
 		if(i<NBELEMENTS) {
@@ -60,16 +69,9 @@ public static int NBDEFAUTSMAX=6;
 		ticketsDemande.faireDemandeDefaut(nouvellequalite);
 		return false;
 	}
+	
 
-	public int getNBELEMENTS() {
-		return NBELEMENTS;
-	}
-
-	public int getNBDEFAUTSMAX() {
-		return NBDEFAUTSMAX;
-	}
-
-	public TableauDefaut creationTabDefaut(String[] nouveauxDefauts, int nombreDefauts) {
+	public TableauDefaut creationTab(String[] nouveauxDefauts, int nombreDefauts) {
 		int i=0;
 		while(i<=nombreDefauts) {
 			String defaut= nouveauxDefauts[i];

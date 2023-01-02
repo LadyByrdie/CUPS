@@ -24,13 +24,13 @@ public class TestTableauQualite {
 		String[] pasbonTab= new String[] {"aimable","ambitieux","autreChose"};
 		String[] surchargeTab= new String[] {"aimable","attentionné","audicieux","autonome","avenant","aventureux"};
 		System.out.println("Premier Tableau:");
-		montab=montab.creationTabQualite(bonTab,3);
+		montab=montab.creationTab(bonTab,3);
 		montab.afficherElements();
 		System.out.println("Deuxième Tableau:");
-		montab1= montab1.creationTabQualite(pasbonTab,3);
+		montab1= montab1.creationTab(pasbonTab,3);
 		montab1.afficherElements();
 		System.out.println("Troisième Tableau");
-		montab3=montab3.creationTabQualite(surchargeTab, 2);
+		montab3=montab3.creationTab(surchargeTab, 2);
 		montab3.afficherElements();
 	}
 	

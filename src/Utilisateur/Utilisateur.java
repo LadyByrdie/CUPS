@@ -1,4 +1,5 @@
 package Utilisateur;
+import ClassesAdmin.TicketsDemande;
 import MenuSelection.Menu;
 import Tableaux.*;
 import Utilisateur.*;
@@ -30,7 +31,7 @@ public class Utilisateur {
 	public String sexe;
 	public String Orientation;
 	int numeroEtudiant;
-	
+	private static int NBDELEMENTSATTENDUS=3;
 	private String identitUtilisateur;
 	
 	public Utilisateur(String nomUtilisateur, String preferenceUtilisateurQualite, String preferenceUtilisateurDefaut, int numeroEtudiant, int age) {
@@ -39,30 +40,28 @@ public class Utilisateur {
 		this.preferenceUtilisateurDefaut = preferenceUtilisateurDefaut;
 		this.numeroEtudiant = numeroEtudiant;
 		this.age= age;
-		creationTabDefaut();
-		creationTabQualite();
-		creerIdentit();
-		DefinirOrientation();
-		DefinirSexe();
 	}
 	
-	protected void creerIdentit() {
+	
+	public void creerIdentit() {
 		String numeroEtudiantString= String.valueOf(numeroEtudiant);
 		this.identitUtilisateur=nomUtilisateur+numeroEtudiantString;
 	}
 	
-	protected void creationTabDefaut(){
+	public void creationTabDefaut(){
 		Scanner obj = new Scanner(System.in);
 		String defaut;
 		int i=0;
-		System.out.println("Veuillez inserer "+ 3 + " des vos defauts");
-		while(i<3) {
+		System.out.println("Veuillez inserer "+ NBDELEMENTSATTENDUS + " des vos defauts");
+		while(i<NBDELEMENTSATTENDUS) {
 			defaut=obj.nextLine();
 			defaut= defaut.replaceAll("\\p{Punct}", "");
 			if(defaut!="") {
 				if(tabDefaut.verifierSidansRef(defaut)&&tabDefaut.verifierSiPresent(defaut)<0){
 					tabDefaut.ajouterElement(defaut);
 					}else {
+						//normalement il devrait avoir un while mais il manque la condition
+						//adequate
 						if(tabDefaut.verifierSiPresent(defaut)>=0) {
 							System.out.println("veuillez inserer un autre:");
 							tabDefaut.ajouterElement(tabDefaut.correction());
@@ -80,31 +79,38 @@ public class Utilisateur {
 		}
 		
 	
-	private void creationTabQualite(){
+	public void creationTabQualite(){
 		Scanner obj = new Scanner(System.in);
 		String qualite;
 		int i=0;
-		System.out.println("Veuillez inserer "+ 3 + " principales des vos qualites");
-		while(i<3) {
+		System.out.println("Veuillez inserer "+ NBDELEMENTSATTENDUS + " des vos qualites");
+		while(i<NBDELEMENTSATTENDUS) {
 			qualite=obj.nextLine();
-			qualite.replaceAll("\\p{Punct}", "");
+			qualite= qualite.replaceAll("\\p{Punct}", "");
 			if(qualite!="") {
-				if(tabQualite.verifierSidansRef(qualite)) {
+				if(tabQualite.verifierSidansRef(qualite)&&tabQualite.verifierSiPresent(qualite)<0){
 					tabQualite.ajouterElement(qualite);
+					}else {
+						//normalement il devrait avoir un while mais il manque la condition
+						//adequate
+						if(tabQualite.verifierSiPresent(qualite)>=0) {
+							System.out.println("veuillez inserer un autre:");
+							tabQualite.ajouterElement(tabQualite.correction());
+						}
+						
+					}
 					System.out.println(i+1+"." + qualite + " à été bien ajuté dans votre tableau.");
 				}else {
-					System.out.println("Veuillez inserer une qualite valable"
-							+ "s'il vous plait");
-					tabQualite.correction();
+				System.out.println("Veuillez inserer un Qualite valable"
+						+ "s'il vous plait");
+				tabDefaut.ajouterElement(tabQualite.correction());
 				}
-
+				i++;
 			}
-			i++;
-		}
 	}
 	
 	
-	private void DefinirOrientation() {
+	public void DefinirOrientation() {
 		Scanner obj = new Scanner(System.in);
 		int option=0;
 		Menu menu = new Menu();
@@ -124,7 +130,7 @@ public class Utilisateur {
 		}
 	}
 	
-	private void DefinirSexe() {
+	public void DefinirSexe() {
 		Scanner obj = new Scanner(System.in);
 		int option=0;
 		Menu menu = new Menu();
@@ -177,10 +183,11 @@ public class Utilisateur {
 	}
 
 
-	protected void afficherInfoUtilisateurOcaml() {
-		System.out.println(this.nomUtilisateur+ ", "+this.preferenceUtilisateurQualite+", "
+	
+	public String afficherInfoUtilisateurOcaml() {
+		return this.nomUtilisateur+ ", "+this.preferenceUtilisateurQualite+", "
 +this.preferenceUtilisateurDefaut+ ", "+this.numeroEtudiant+", "+this.age+", "+this.sexe+ ", " 
-+this.orientation+", " +this.identitUtilisateur+", " +tabQualite.toString()+", " +this.tabDefaut.toString());
++this.orientation+", " +this.identitUtilisateur+", " +tabQualite.toString()+", " +this.tabDefaut.toString();
 	}
 	
 	public void afficherInfoUtilisateur() {
@@ -196,7 +203,4 @@ public class Utilisateur {
 		tabDefaut.afficherTableau();
 	}
 	
-public static void main(String[] args) {
-	
-}
 }

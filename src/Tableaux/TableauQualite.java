@@ -8,16 +8,16 @@ import ClassesAdmin.TicketsDemande;
 
 
 public class TableauQualite extends Tableau{
-	private int NBELEMENTSMAX=37;
+	private static int NBELEMENTSMAX=37;
 	private static int NBQUALITEMAX=6;
 	private Tableau tableauQualite= new Tableau(NBQUALITEMAX);
-	private String[] tableauRefQualite= new String[] {"aimable","ambitieux","amical",
-			  "appliquÃ©","alturiste","analytique","assertif","astucieux","attachant",
-			  "attentif","attentionnÃ©","audicieux","autonome","avenant","aventureux",
+public static String[] tableauRefQualite= new String[] {"aimable","ambitieux","amical",
+			  "appliqué","alturiste","analytique","assertif","astucieux","attachant",
+			  "attentif","attentionné","audicieux","autonome","avenant","aventureux",
 			  "bienveillant","calme","chaleureux","charimatique","combatif","communicatif",
-			  "concentrÃ©.e","pacifiste","confiant","conformiste","convaincant","cooperatif",
-			  "cultivÃ©","curieux.se","dÃ©cidÃ©","dÃ©vouÃ©","confiable","direct","disciplinÃ©",
-			  "discret","drÃ´le","dynamique","efficace"};
+			  "concentré.e","pacifiste","confiant","conformiste","convaincant","cooperatif",
+			  "cultivé","curieux.se","décidé","dévoué","confiable","direct","discipliné",
+			  "discret","drôle","dynamique","efficace"};
 	public TableauQualite() {
 		super(NBQUALITEMAX);
 	}
@@ -43,13 +43,13 @@ public class TableauQualite extends Tableau{
 	}
 
 
-	public void setTableauRefQualite(String[] tableauRefQualite) {
-		this.tableauRefQualite = tableauRefQualite;
+	public void setTableauRefQualite(String[] NtableauRefQualite) {
+		tableauRefQualite = NtableauRefQualite;
 	}
 	
-	public boolean verifierSidansRef(String nouvellequalite) {
+	public static boolean verifierSidansRef(String nouvellequalite) {
 		int i=0;
-		while(i<NBELEMENTSMAX&&(!Objects.equals(nouvellequalite, tableauRefQualite[i]))){
+		while(i<NBELEMENTSMAX&&(!nouvellequalite.equals(tableauRefQualite[i]))){
 			i++;
 		}
 		if(i<NBELEMENTSMAX) {
@@ -63,18 +63,18 @@ public class TableauQualite extends Tableau{
 	public String correction() {
 		Scanner obj = new Scanner(System.in);
 		String qualite=obj.nextLine();
-		while(!verifierSidansRef(qualite)) {
+		while((!verifierSidansRef(qualite))&&(this.verifierSiPresent(qualite)>=0)) {
 			qualite=obj.nextLine();
 			qualite= qualite.replaceAll("\\p{Punct}", "");
 			}
-				System.out.println("Votre modification Ã  bien Ã©tÃ© enregistrÃ©");
+				System.out.println("Votre modification à bien été enregistré");
 				return qualite;
 		}
 		
 		
-	public TableauQualite creationTabQualite(String[] nouvellesQualites, int nombreQualites) {
+	public TableauQualite creationTab(String[] nouvellesQualites, int nombreQualites) {
 		int i=0;
-		while(i<nombreQualites) {
+		while(i<nombreQualites){
 			String  qualite= nouvellesQualites[i];
 			if (verifierSidansRef(qualite)) {
 				if (this.verifierSiPresent(qualite)<0) {
