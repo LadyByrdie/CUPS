@@ -11,7 +11,6 @@ public class testspourTableaux {
 //		tab1.testAjouterelementsRepete();
 //		tab1.testEliminerElementSString();
 //		tab1.testEliminerElementStringAbsence();
-//		tab1.testRangementTableaux(); a retester
 //		tab1.testerTranformerTableau();
 //		tab1.testerTranformerTableauSurcharge();
 		
