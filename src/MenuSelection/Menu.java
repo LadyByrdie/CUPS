@@ -10,7 +10,7 @@ public class Menu {
 		Scanner obj = new Scanner(System.in);
 		System.out.println("Bonjour quelle est votre nom?");
 		String nom= obj.nextLine();
-		System.out.println("Bonjour " + nom + "Quelle qualite cherchez vous dans votre Romeo/Juliette?");
+		System.out.println("Bonjour " + nom + "Quelle qualite vous cherchez dans votre Romeo/Juliette?");
 		String qualiteCherche=obj.nextLine();
 		//Il faudrait corriger l'erreur a fin d'avoir acces au tableau de reference et verifier si 
 		//la qualite ou le defaut existe (fonction a faire)
@@ -20,7 +20,7 @@ public class Menu {
 //					+ "en attendents vous pouvez reesayez avec une autre qualite.");
 //			qualiteCherche=obj.nextLine();
 //		}
-		System.out.println("Et quelle est le defaut que vous voulez eviter?");
+		System.out.println("Et quelle est le defaut qui pourrait gacher ce être parfait?");
 		String defautEvite= obj.nextLine();
 //		while(!TableauDefaut.verifierSidansRef(defautEvite)) {
 //			System.out.println("Le Defaut que vous cherchez n'est pas encore dans nos donnees"
@@ -33,7 +33,7 @@ public class Menu {
 		//Ici normalement on devrait comparer la donne inseré a la basse de donnees a fin de s'assurer que 
 		//c'est un numero étudiant valable.
 		
-		System.out.println("Quelle est votre age?");
+		System.out.println("Vous avez quelle âge?");
 		int age=obj.nextInt();
 		Utilisateur nouveauUtilisateur= new Utilisateur(nom,qualiteCherche,defautEvite,numeroEt,age);
 		nouveauUtilisateur.creationTabDefaut();
