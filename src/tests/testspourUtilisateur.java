@@ -25,7 +25,7 @@ public class testspourUtilisateur {
 		//test pour le tableauUtilisitateur
 		
 //		test2.testAjouterElement()
-		test2.testAfficherInformationUtilisateur();
+		test2.testAfficherInformationUtilisateur(); 
 	}
 
 }

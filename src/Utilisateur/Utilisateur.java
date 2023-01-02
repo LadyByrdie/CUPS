@@ -60,8 +60,15 @@ public class Utilisateur {
 			defaut=obj.nextLine();
 			defaut= defaut.replaceAll("\\p{Punct}", "");
 			if(defaut!="") {
-				if(tabDefaut.verifierSidansRef(defaut)){
+				if(tabDefaut.verifierSidansRef(defaut)&&tabDefaut.verifierSiPresent(defaut)<0){
 					tabDefaut.ajouterElement(defaut);
+					}else {
+						if(tabDefaut.verifierSiPresent(defaut)>=0) {
+							System.out.println("veuillez inserer un autre:");
+							tabDefaut.ajouterElement(tabDefaut.correction());
+						}
+						
+					}
 					System.out.println(i+1+"." + defaut + " à été bien ajuté dans votre tableau.");
 				}else {
 				System.out.println("Veuillez inserer un Defaut valable"
@@ -72,7 +79,6 @@ public class Utilisateur {
 			}
 		}
 		
-	}
 	
 	private void creationTabQualite(){
 		Scanner obj = new Scanner(System.in);

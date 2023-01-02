@@ -10,14 +10,14 @@ import java.util.Scanner;
 public class TableauDefaut extends Tableau {
 
 	private int NBELEMENTS=35;
-	private static int NBDEFAUTSMAX=6;
+public static int NBDEFAUTSMAX=6;
 	private String[] tabDefautReference= new String[] {"Anxieux","Arbitraire","Arriviste","Arrogant","Associable",
-			"Asocial","Assisté","Autoritaire","Avare","Avide","Bagarreur",
-			"Baratineur","Bavard","Bête","Bileux","Blagueur","Blasé",
-			"Blessant","Borné","Boudeur","Brouillon","Brute","Bruyant",
-			"Cachottier","Calculateur","Capricieux","Caractériel","Carriériste",
+			"Asocial","Assiste","Autoritaire","Avare","Avide","Bagarreur",
+			"Baratineur","Bavard","B�te","Bileux","Blagueur","Blase",
+			"Blessant","Borne","Boudeur","Brouillon","Brute","Bruyant",
+			"Cachottier","Calculateur","Capricieux","Caract�riel","Carriariste",
 			"Cassant","Casse-cou","Castrateur","Chiant","Insensible",
-			"Cérémonieux","Chicaneur"};
+			"C�r�monieux","Chicaneur"};
 	
 	private Tableau tableauDefaut= new Tableau(NBDEFAUTSMAX);
 	public TableauDefaut() {
@@ -39,7 +39,7 @@ public class TableauDefaut extends Tableau {
 	public String correction() {
 		Scanner obj = new Scanner(System.in);
 		String defaut=obj.nextLine();
-		while(!verifierSidansRef(defaut)) {
+		while(!(verifierSidansRef(defaut))&&(this.verifierSiPresent(defaut)>=0)) {
 			defaut=obj.nextLine();
 			defaut= defaut.replaceAll("\\p{Punct}", "");
 			}

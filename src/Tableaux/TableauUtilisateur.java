@@ -41,7 +41,7 @@ public class TableauUtilisateur extends Tableau{
 	
 	public void EliminerUtilisateur(String numIdent){
 		int i=0;
-		int presentEn= this.verifierSiPresent(numIdent);
+		int presentEn= super.verifierSiPresent(numIdent);
 		if (presentEn>=0){
 			this.EliminerElement(presentEn);
 				tableauUtilisateur[recherchedansleTabU(numIdent)]=null;
@@ -57,7 +57,7 @@ public class TableauUtilisateur extends Tableau{
 	}
 	
 	public void afficherInformationUtilisateur(String numIdent) {
-		int indiceUtilisateur= this.verifierSiPresent(numIdent);
+		int indiceUtilisateur= super.verifierSiPresent(numIdent);
 		if (indiceUtilisateur>=0){
 			int i=0;
 			while((!Objects.equals(numIdent, tableauUtilisateur[i].getIdentitUtilisateur()))&&(i<elementsTabU)) {

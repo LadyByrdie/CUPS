@@ -20,8 +20,8 @@ public class testspourTableaux {
 //		TestTableauQualite tab2;
 		TestTableauQualite tab2= new TestTableauQualite();
 //		
-////		tab2.testverifierSidansRef();
-//		tab2.testCreationTabQualite();
+//		tab2.testverifierSidansRef();
+		tab2.testCreationTabQualite();
 		
 		//Tests pour les tableu d'Utilisateur
 		

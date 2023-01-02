@@ -59,19 +59,19 @@ public class Tableau {
 	}
 	
 	
-	protected int verifierSiPresent(String element){
+	public int verifierSiPresent(String element){
 		int i=0;
 		if(this.nbelements>0) {
-		while ((this.tableau[i]!=element)&(i<this.nbelements)) {
-			i++;
-		}
-		if (this.tableau[i]==element) {
+			while ((i<nbelements)&&!(element.equals(tableau[i]))) {
+				i++;
+			}
+		if (element.equals(tableau[i])) {
 			return i;
-		}else {
-			return -1;
-	}
-		}else{
-			return -2;
+			}else {
+				return -1;
+				}
+			}else{
+				return -2;
 	}
 }
 	
